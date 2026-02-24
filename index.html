@@ -1,8 +1,95 @@
 <!DOCTYPE html><html lang="pt-BR">
 <head>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SIPAT 2026 – IFPA Campus Ananindeua</title>  <style>
+    /* Variáveis para facilitar troca de temas */
+:root {
+  --bg-primary: #f8fafc;
+  --text-primary: #2d3748;
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  --header-bg: linear-gradient(135deg, rgba(10,31,68,0.88), rgba(13,143,82,0.72));
+  --sidebar-bg: #0d8f52;
+  --accent: #34d399;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0f172a;
+  --text-primary: #e2e8f0;
+  --card-bg: #1e293b;
+  --card-border: #334155;
+  --header-bg: linear-gradient(135deg, rgba(3,7,18,0.92), rgba(5,46,22,0.82));
+  --sidebar-bg: #065f46;
+  --accent: #6ee7b7;
+}
+
+/* Aplicar as variáveis */
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+header {
+  background: var(--header-bg);
+  color: white;
+  transition: background 0.5s ease;
+}
+
+aside.sidebar {
+  background: var(--sidebar-bg);
+  transition: background 0.4s ease;
+}
+
+.card {
+  background: var(--card-bg);
+  border-color: var(--card-border);
+  color: var(--text-primary);
+  transition: all 0.4s ease;
+}
+
+h1, h2, h3 {
+  color: var(--text-primary);
+}
+
+/* Botão de toggle */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.6rem;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  background: rgba(255,255,255,0.25);
+}
+
+[data-theme="dark"] .theme-toggle {
+  background: rgba(0,0,0,0.3);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  background: rgba(0,0,0,0.5);
+}
+    
     body {
       margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -233,7 +320,11 @@ footer {
       padding: 20px;
       margin-top: 40px;
     }
-  </style></head><body>  <header>
+  </style></head><body>
+    <button class="theme-toggle" id="themeToggle" title="Alternar modo claro/escuro">
+  <i class="fas fa-moon"></i>
+</button>
+    <header>
     <h1>SIPAT 2026</h1>
     <p>Semana Interna de Prevenção de Acidentes do Trabalho</p>
     <p><strong>IFPA – Campus Ananindeua</strong></p>
@@ -304,9 +395,34 @@ footer {
   </section>  <footer>
     <p>© 2026 – SIPAT IFPA Campus Ananindeua</p>
     <p>Curso Técnico | Segurança, Tecnologia e Valorização da Vida</p>
-  </footer></body>
+  </footer>
+    <script>
+  const toggleButton = document.getElementById('themeToggle');
+  const body = document.body;
+
+  // Verifica se o usuário já tem preferência salva
+  if (localStorage.getItem('theme') === 'dark' || 
+      (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    body.setAttribute('data-theme', 'dark');
+    toggleButton.innerHTML = '<i class="fas fa-sun"></i>';
+  }
+
+  toggleButton.addEventListener('click', () => {
+    if (body.getAttribute('data-theme') === 'dark') {
+      body.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+      toggleButton.innerHTML = '<i class="fas fa-moon"></i>';
+    } else {
+      body.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+      toggleButton.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+  });
+</script>
+  </body>
 
 </html>
+
 
 
 
