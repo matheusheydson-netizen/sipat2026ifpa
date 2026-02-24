@@ -24,6 +24,30 @@
   --header-bg: linear-gradient(135deg, rgba(3,7,18,0.92), rgba(5,46,22,0.82));
   --sidebar-bg: #065f46;
   --accent: #6ee7b7;
+
+  /* Força texto branco no header inteiro no dark mode */
+  header, header {
+  background: var(--header-bg);
+  color: white;                /* já deve ter */
+}
+
+.header-content h1,
+.header-content h2,
+.header-content p,
+.tema-destaque {
+  color: white;                /* reforça */
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.7); /* ajuda na legibilidade */
+}
+
+  /* Garante que o overlay não apague o texto */
+  .header-overlay {
+    background: linear-gradient(to right, rgba(0,0,0,0.6), transparent 70%) !important;
+  }
+
+  /* Sidebar links ficam mais visíveis */
+  .sidebar a {
+    color: white !important;
+  }
 }
 
 /* Aplicar as variáveis */
@@ -422,6 +446,7 @@ footer {
   </body>
 
 </html>
+
 
 
 
