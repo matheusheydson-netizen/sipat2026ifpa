@@ -115,11 +115,12 @@ h1, h2, h3 {
 }
     
     body {
-      margin: 0;
+  margin: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: #f0f9f4; /* Verde bem claro */
-  color: #333;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   line-height: 1.7;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
 header {
@@ -308,17 +309,18 @@ footer {
       padding: 40px 20px;
       max-width: 1100px;
       margin: 20px auto;
-      background: #fff;
+      background: var(--card-bg);
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
     h2 {
-      color: #0a6c3d;
+      color: var(--text-primary);
     }
 
     .card {
-      background: #e8f5ee;
+      background: var(--card-bg);
+      border-color: var(--card-border);
       padding: 20px;
       border-left: 5px solid #0a6c3d;
       margin: 20px 0;
@@ -446,6 +448,7 @@ footer {
   </body>
 
 </html>
+
 
 
 
