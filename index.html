@@ -424,7 +424,7 @@ footer {
   const toggleButton = document.getElementById('themeToggle');
   const body = document.body;
 
-  // Verifica se o usuário já tem preferência salva
+  // Detecta preferência inicial
   if (localStorage.getItem('theme') === 'dark' || 
       (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     body.setAttribute('data-theme', 'dark');
@@ -446,6 +446,7 @@ footer {
   </body>
 
 </html>
+
 
 
 
